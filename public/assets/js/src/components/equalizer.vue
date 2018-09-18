@@ -38,19 +38,21 @@ export default {
                 this.classes.forEach(elemClass => {
                     // Find nodelist of elements with the specified class and spread into array
                     const eqItems = [...this.$el.querySelectorAll(`.${elemClass}`)];
-
-                    if (itemsPerRow > 1) {
-                        // If items per row specified, split items into rows and set height by row
-                        const rows = chunk(eqItems, itemsPerRow);
-                        rows.forEach(row => {
-                            this.setMaxHeight(row, false);
-                        });
-                    } else if (itemsPerRow === 1) {
-                        // if 1 item per row, then height set to auto
-                        this.setMaxHeight(eqItems, true);
-                    } else {
-                        // If not specified, just make all items equal height
-                        this.setMaxHeight(eqItems, false);
+                    switch (true) {
+                        case itemsPerRow > 1:
+                            // If items per row specified, split items into rows and set height by row
+                            const rows = chunk(eqItems, itemsPerRow);
+                            rows.forEach(row => {
+                                this.setMaxHeight(row, false);
+                            });
+                            break;
+                        case itemsPerRow === 1:
+                            // if 1 item per row, then height set to auto
+                            this.setMaxHeight(eqItems, true);
+                            break;
+                        default:
+                            // If not specified, just make all items equal height
+                            this.setMaxHeight(eqItems, false);
                     }
                 });
             }, 100)
