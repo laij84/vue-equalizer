@@ -18,7 +18,7 @@ export default {
         config: {
             type: Object,
             default: () => ({
-                0: null
+                0: undefined
             })
         }
     },
@@ -38,22 +38,12 @@ export default {
                 this.classes.forEach(elemClass => {
                     // Find nodelist of elements with the specified class and spread into array
                     const eqItems = [...this.$el.querySelectorAll(`.${elemClass}`)];
-                    switch (true) {
-                        case itemsPerRow > 1:
-                            // If items per row specified, split items into rows and set height by row
-                            const rows = chunk(eqItems, itemsPerRow);
-                            rows.forEach(row => {
-                                this.setMaxHeight(row, false);
-                            });
-                            break;
-                        case itemsPerRow === 1:
-                            // if 1 item per row, then height set to auto
-                            this.setMaxHeight(eqItems, true);
-                            break;
-                        default:
-                            // If not specified, just make all items equal height
-                            this.setMaxHeight(eqItems, false);
-                    }
+
+                    // If items per row specified, split items into rows and set height by row
+                    const rows = chunk(eqItems, itemsPerRow);
+                    rows.forEach(row => {
+                        this.setMaxHeight(row, itemsPerRow === 1);
+                    });
                 });
             }, 100)
         };
@@ -78,9 +68,7 @@ export default {
 
                 // Find the largest height
                 let maxHeight;
-                if (auto) {
-                    maxHeight = "auto";
-                } else {
+                if (!auto) {
                     maxHeight = `${Math.max.apply(null, heights)}px`;
                 }
 
