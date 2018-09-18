@@ -56,7 +56,7 @@ In your HTML:
     >
         <!-- HTML -->
     </equalizer>
-</app>
+</div>
 ```
 
 ### Classes
