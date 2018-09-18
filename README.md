@@ -24,7 +24,6 @@ Basic usage of component
 <equalizer
     :classes="['card','card-title', 'card-desc']"
     :config="{
-        1360: 4,
         1024: 4,
         680: 3,
         0: 1
