@@ -44,7 +44,7 @@ The classes prop is **required**.
 
 The equalizer component accepts a config object of key value pairs. The key must be an integer which is a min-width breakpoint. The value is the number of elements per row at that breakpoint.
 
-The config prop is **optional**. If config is passed then by default the equalizer will make all items the same height regardless of screen width.
+The config prop is **optional**. If no config object is passed as props then by default the equalizer will make all items the same height regardless of screen width.
 
 ## Demo
 
