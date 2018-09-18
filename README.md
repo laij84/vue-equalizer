@@ -1,6 +1,6 @@
 # Vue Equalizer
 
-Vue equalizer is a vue component to help solve a common frontend development problem where independent items and nested content need to be equal height.
+Vue Equalizer is a vue component to help solve a common frontend development problem, where independent items and nested content need to be equal height.
 
 Until the Level 2 CSS Grid specification which allows for subgrids is available and widely supported, javascript will be required to achieve this effect.
 
@@ -63,13 +63,13 @@ In your HTML:
 
 The equalizer component accepts an array of classes. Each element of that class will be made the same height.
 
-The classes prop is **required**.
+The `classes` prop is **required**.
 
 ### Config
 
 The equalizer component accepts a config object of key value pairs. The key must be an integer which is a min-width breakpoint. The value is the number of elements per row at that breakpoint.
 
-The config prop is **optional**. If no config object is passed as props then by default the equalizer will make all items the same height regardless of screen width.
+The `config` prop is **optional**. If no config object is passed as props then by default the equalizer will make all items the same height regardless of screen width.
 
 ## Demo
 
