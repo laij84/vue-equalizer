@@ -1,6 +1,6 @@
 {
     "name": "vue-equalizer",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "description": "",
     "author": "Jason Lai",
     "license": "ISC",
@@ -21,13 +21,13 @@
         "build:unpkg": "rollup --config build/rollup.config.js --format iife --file dist/equalizer.min.js"
     },
     "dependencies": {
+        "babel-polyfill": "^6.26.0",
         "debounce": "^1.2.0",
         "imagesloaded": "^4.1.4"
     },
     "devDependencies": {
         "babel-core": "^6.26.3",
         "babel-plugin-external-helpers": "^6.22.0",
-        "babel-polyfill": "^6.26.0",
         "babel-preset-env": "^1.7.0",
         "cryptiles": "^4.1.2",
         "hoek": "^4.1.2",
