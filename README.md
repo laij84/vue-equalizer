@@ -8,11 +8,11 @@ Until the Level 2 CSS Grid specification which allows for subgrids is available 
 
 A common design frontend developers are given looks something like this. A row of blocks all with nicely aligned content.
 
-![](public/assets/img/design.png?raw=true)
+![](./demo/public/assets/img/design.png?raw=true)
 
 The reality is, once real and dynamic content is added the blocks end up looking like this:
 
-![](public/assets/img/reality.png?raw=true)
+![](./demo/public/assets/img/reality.png?raw=true)
 
 Vue Equalizer fixes this.
 
@@ -47,4 +47,4 @@ The config prop is **optional**. If no config object is passed as props then by 
 
 ## Demo
 
-![](public/assets/img/equalizer.gif?raw=true)
+![](./demo/public/assets/img/equalizer.gif?raw=true)
