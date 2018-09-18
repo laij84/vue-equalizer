@@ -12,7 +12,7 @@ export default {
     props: {
         classes: {
             type: Array,
-            default: ()=> {[]}
+            default: ()=> []
         },
         config: {
             type: Object,
