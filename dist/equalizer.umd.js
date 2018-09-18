@@ -1,7 +1,7 @@
 (function (global, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('debounce'), require('imagesloaded')) :
     typeof define === 'function' && define.amd ? define(['exports', 'debounce', 'imagesloaded'], factory) :
-    (factory((global.Equalizer = {}),global.debounce,global.imagesLoaded));
+    (factory((global.equalizer = {}),global.debounce,global.imagesLoaded));
 }(this, (function (exports,debounce,imagesLoaded) { 'use strict';
 
     debounce = debounce && debounce.hasOwnProperty('default') ? debounce['default'] : debounce;

@@ -8,29 +8,55 @@ Until the Level 2 CSS Grid specification which allows for subgrids is available 
 
 A common design frontend developers are given looks something like this. A row of blocks all with nicely aligned content.
 
-![](./demo/public/assets/img/design.png?raw=true)
+![](https://www.dropbox.com/s/u5rfpf9j4as6mp0/design.png?raw=true)
 
 The reality is, once real and dynamic content is added the blocks end up looking like this:
 
-![](./demo/public/assets/img/reality.png?raw=true)
+![](https://www.dropbox.com/s/j0bizafvizpw424/reality.png?raw=true)
 
 Vue Equalizer fixes this.
 
-## Usage
+## How to use
 
-Basic usage of component
+### Installation
 
 ```
-<equalizer
+npm install --save vue-equalizer
+```
+
+Then, in your javascript file:
+
+```js
+import Vue from "vue";
+
+Vue.component("equalizer", require("vue-equalizer"));
+
+new Vue({
+    el: "#app"
+});
+```
+
+Alternatively add the CDN script tag directly to your page.
+
+```html
+<script src="https://unpkg.com/vue-equalizer@1.0.0/dist/equalizer.min.js"></script>
+```
+
+In your HTML:
+
+```html
+<div id="app">
+    <equalizer
     :classes="['card','card-title', 'card-desc']"
     :config="{
         1024: 4,
         680: 3,
         0: 1
-     }"
->
-// HTML
-</equalizer>
+    }"
+    >
+        <!-- HTML -->
+    </equalizer>
+</app>
 ```
 
 ### Classes
@@ -47,4 +73,4 @@ The config prop is **optional**. If no config object is passed as props then by 
 
 ## Demo
 
-![](./demo/public/assets/img/equalizer.gif?raw=true)
+![](https://www.dropbox.com/s/exqqfy1npnsmoua/equalizer.gif?raw=true)
