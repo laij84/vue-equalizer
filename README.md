@@ -28,18 +28,18 @@ Then, in your javascript file:
 
 ```js
 import Vue from "vue";
-
-Vue.component("equalizer", require("vue-equalizer"));
+import equalizer from "vue-equalizer";
 
 new Vue({
-    el: "#app"
+    el: "#app",
+    components: { equalizer }
 });
 ```
 
 Alternatively add the CDN script tag directly to your page.
 
 ```html
-<script src="https://unpkg.com/vue-equalizer@1.0.0/dist/equalizer.min.js"></script>
+<script src="https://unpkg.com/vue-equalizer@1.0.3/dist/equalizer.min.js"></script>
 ```
 
 In your HTML:

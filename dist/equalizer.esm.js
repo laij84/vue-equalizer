@@ -1,43 +1,71 @@
+import 'babel-polyfill';
 import debounce from 'debounce';
 import imagesLoaded from 'imagesloaded';
 
-(function(){ if(typeof document !== 'undefined'){ var head=document.head||document.getElementsByTagName('head')[0], style=document.createElement('style'), css=""; style.type='text/css'; if (style.styleSheet){ style.styleSheet.cssText = css; } else { style.appendChild(document.createTextNode(css)); } head.appendChild(style); } })();
+var toConsumableArray = function (arr) {
+  if (Array.isArray(arr)) {
+    for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) arr2[i] = arr[i];
 
-var component = {render: function(){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"eq-container"},[_vm._t("default")],2)},staticRenderFns: [],
+    return arr2;
+  } else {
+    return Array.from(arr);
+  }
+};
+
+(function () {
+    if (typeof document !== 'undefined') {
+        var head = document.head || document.getElementsByTagName('head')[0],
+            style = document.createElement('style'),
+            css = "";style.type = 'text/css';if (style.styleSheet) {
+            style.styleSheet.cssText = css;
+        } else {
+            style.appendChild(document.createTextNode(css));
+        }head.appendChild(style);
+    }
+})();
+
+var component = { render: function render() {
+        var _vm = this;var _h = _vm.$createElement;var _c = _vm._self._c || _h;return _c('div', { staticClass: "eq-container" }, [_vm._t("default")], 2);
+    }, staticRenderFns: [],
     props: {
         classes: {
             type: Array,
-            default: function (){}
+            default: function _default() {
+                return [];
+            }
         },
         config: {
             type: Object,
-            default: function () { return ({
-                0: undefined
-            }); }
+            default: function _default() {
+                return {
+                    0: undefined
+                };
+            }
         }
     },
     data: function data() {
         return {
-            equalize: debounce(function() {
-                var this$1 = this;
+            equalize: debounce(function () {
+                var _this = this;
 
                 var breakpoint = this.getCurrentBreakpoint();
                 var itemsPerRow = this.config[breakpoint];
 
                 this.classes.forEach(function (elemClass) {
-                    var eqItems = [].concat( this$1.$el.querySelectorAll(("." + elemClass)) );
+                    var eqItems = [].concat(toConsumableArray(_this.$el.querySelectorAll('.' + elemClass)));
 
-                    var rows = this$1.chunk(eqItems, itemsPerRow);
+                    var rows = _this.chunk(eqItems, itemsPerRow);
                     rows.forEach(function (row) {
-                        this$1.setMaxHeight(row, itemsPerRow === 1);
+                        _this.setMaxHeight(row, itemsPerRow === 1);
                     });
                 });
             }, 100)
         };
     },
+
     methods: {
-        chunk: function chunk(a, number) {
-            if ( number === void 0 ) number = a.length;
+        chunk: function chunk(a) {
+            var number = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : a.length;
 
             var temp = a.slice();
             var arr = [];
@@ -49,29 +77,29 @@ var component = {render: function(){var _vm=this;var _h=_vm.$createElement;var _
             return arr;
         },
         getCurrentBreakpoint: function getCurrentBreakpoint() {
-            var current;
+            var current = void 0;
             this.breakpoints.some(function (breakpoint) {
                 current = breakpoint;
-                return window.matchMedia(("(min-width: " + breakpoint + "px)")).matches;
+                return window.matchMedia('(min-width: ' + breakpoint + 'px)').matches;
             });
 
             return current;
         },
         getNaturalHeights: function getNaturalHeights(items) {
-            return items.map(function (item) {
+            return [].concat(toConsumableArray(items)).map(function (item) {
                 item.style.height = "auto";
                 return item.clientHeight;
             });
         },
         setMaxHeight: function setMaxHeight(items, auto) {
-            var this$1 = this;
+            var _this2 = this;
 
             imagesLoaded(items, function () {
-                var heights = this$1.getNaturalHeights(items);
+                var heights = _this2.getNaturalHeights(items);
 
-                var maxHeight;
+                var maxHeight = void 0;
                 if (!auto) {
-                    maxHeight = (Math.max.apply(null, heights)) + "px";
+                    maxHeight = Math.max.apply(null, heights) + 'px';
                 }
 
                 items.map(function (item) {
@@ -82,7 +110,7 @@ var component = {render: function(){var _vm=this;var _h=_vm.$createElement;var _
     },
     computed: {
         breakpoints: function breakpoints() {
-            return Object.keys(this.config).sort(function(a, b) {
+            return Object.keys(this.config).sort(function (a, b) {
                 return b - a;
             });
         }
@@ -102,14 +130,14 @@ var component = {render: function(){var _vm=this;var _h=_vm.$createElement;var _
 
 // install function executed by Vue.use()
 function install(Vue) {
-	if (install.installed) { return; }
+	if (install.installed) return;
 	install.installed = true;
 	Vue.component('equalizer', component);
 }
 
 // Create module definition for Vue.use()
 var plugin = {
-	install: install,
+	install: install
 };
 
 // To auto-install when vue is found

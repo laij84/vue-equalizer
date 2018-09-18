@@ -5,6 +5,7 @@
 </template>
 
 <script>
+import 'babel-polyfill';
 import debounce from "debounce";
 import imagesLoaded from "imagesloaded";
 
@@ -12,7 +13,7 @@ export default {
     props: {
         classes: {
             type: Array,
-            default: ()=> []
+            default: () => []
         },
         config: {
             type: Object,
@@ -59,7 +60,7 @@ export default {
             return current;
         },
         getNaturalHeights(items) {
-            return items.map(item => {
+            return [...items].map(item => {
                 item.style.height = "auto";
                 return item.clientHeight;
             });
