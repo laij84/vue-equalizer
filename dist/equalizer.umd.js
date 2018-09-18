@@ -13,7 +13,7 @@
         props: {
             classes: {
                 type: Array,
-                default: []
+                default: function (){}
             },
             config: {
                 type: Object,
@@ -110,7 +110,7 @@
     function install(Vue) {
     	if (install.installed) { return; }
     	install.installed = true;
-    	Vue.component('Equalizer', component);
+    	Vue.component('equalizer', component);
     }
 
     // Create module definition for Vue.use()

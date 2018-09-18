@@ -7,7 +7,7 @@ var component = {render: function(){var _vm=this;var _h=_vm.$createElement;var _
     props: {
         classes: {
             type: Array,
-            default: []
+            default: function (){}
         },
         config: {
             type: Object,
@@ -104,7 +104,7 @@ var component = {render: function(){var _vm=this;var _h=_vm.$createElement;var _
 function install(Vue) {
 	if (install.installed) { return; }
 	install.installed = true;
-	Vue.component('Equalizer', component);
+	Vue.component('equalizer', component);
 }
 
 // Create module definition for Vue.use()
