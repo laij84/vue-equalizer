@@ -5,8 +5,7 @@
 </template>
 
 <script>
-import debounce from "../helpers/debounce";
-import chunk from "../helpers/chunk";
+import debounce from "debounce";
 import imagesLoaded from "imagesloaded";
 
 export default {
@@ -24,23 +23,14 @@ export default {
     },
     data() {
         return {
-            // Wrap in debounce function for performance.
-            // Debounce wrapped function must be in the Data, not the Methods of the component because
-            // the debounced function is created when the component is compiled,
-            // and each instance of the component shares the same debounced function.
-            // it executes once after specified time, so only the last component runs the function.
-            // You need this function to be unique for each component, define the method in the data function because the data function is called for every instance of the component.
             equalize: debounce(function() {
-                const breakpoint = this.getCurrentBreakpoint(); // get current breakpoint
-                const itemsPerRow = this.config[breakpoint]; // get items per row for that breakpoint
+                const breakpoint = this.getCurrentBreakpoint();
+                const itemsPerRow = this.config[breakpoint];
 
-                // loop over array of classes
                 this.classes.forEach(elemClass => {
-                    // Find nodelist of elements with the specified class and spread into array
                     const eqItems = [...this.$el.querySelectorAll(`.${elemClass}`)];
 
-                    // If items per row specified, split items into rows and set height by row
-                    const rows = chunk(eqItems, itemsPerRow);
+                    const rows = this.chunk(eqItems, itemsPerRow);
                     rows.forEach(row => {
                         this.setMaxHeight(row, itemsPerRow === 1);
                     });
@@ -49,6 +39,16 @@ export default {
         };
     },
     methods: {
+        chunk(a, number = a.length) {
+            const temp = a.slice();
+            const arr = [];
+
+            while (temp.length) {
+                arr.push(temp.splice(0, number));
+            }
+
+            return arr;
+        },
         getCurrentBreakpoint() {
             let current;
             this.breakpoints.some(breakpoint => {
@@ -66,16 +66,13 @@ export default {
         },
         setMaxHeight(items, auto) {
             imagesLoaded(items, () => {
-                // Return array of items natural height
                 let heights = this.getNaturalHeights(items);
 
-                // Find the largest height
                 let maxHeight;
                 if (!auto) {
                     maxHeight = `${Math.max.apply(null, heights)}px`;
                 }
 
-                // Map over each item and apply the max-height so they are all equal sized
                 items.map(item => {
                     item.style.height = maxHeight;
                 });
