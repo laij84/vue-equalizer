@@ -10,7 +10,7 @@ A common design frontend developers are given looks something like this. A row o
 
 ![](https://www.dropbox.com/s/u5rfpf9j4as6mp0/design.png?raw=true)
 
-The reality is, once real and dynamic content is added the blocks end up looking like this:
+The reality is that once real and dynamic content is added, the blocks end up looking like this:
 
 ![](https://www.dropbox.com/s/j0bizafvizpw424/reality.png?raw=true)
 
