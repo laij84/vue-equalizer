@@ -58,13 +58,16 @@ export default {
 
             return current;
         },
+        getNaturalHeights(items) {
+            return items.map(item => {
+                item.style.height = "auto";
+                return item.clientHeight;
+            });
+        },
         setMaxHeight(items, auto) {
             imagesLoaded(items, () => {
                 // Return array of items natural height
-                let heights = items.map(item => {
-                    item.style.height = "auto";
-                    return item.clientHeight;
-                });
+                let heights = this.getNaturalHeights(items);
 
                 // Find the largest height
                 let maxHeight;
