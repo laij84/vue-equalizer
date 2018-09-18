@@ -2,6 +2,9 @@
     "name": "vue-equalizer",
     "version": "1.0.0",
     "description": "",
+    "author": "Jason Lai",
+    "license": "ISC",
+    "repository": "",
     "main": "dist/equalizer.umd.js",
     "module": "dist/equalizer.esm.js",
     "unpkg": "dist/equalizer.min.js",
@@ -16,7 +19,9 @@
     },
     "dependencies": {
         "cryptiles": "^4.1.2",
-        "hoek": "^4.1.2"
+        "hoek": "^4.1.2",
+        "debounce": "^1.2.0",
+        "imagesloaded": "^4.1.4"
     },
     "devDependencies": {
         "minimist": "^1.2.0",

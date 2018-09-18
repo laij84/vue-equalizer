@@ -7,7 +7,7 @@ import minimist from 'minimist';
 const argv = minimist(process.argv.slice(2));
 
 const config = {
-    input: 'index.js',
+    input: 'src/index.js',
     output: {
         name: 'Equalizer',
         exports: 'named',

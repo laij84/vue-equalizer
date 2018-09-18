@@ -1,5 +1,5 @@
 // Import vue component
-import component from './demo/public/assets/js/src/components/equalizer.vue';
+import component from './equalizer.vue';
 
 // install function executed by Vue.use()
 export function install(Vue) {
