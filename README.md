@@ -1,8 +1,8 @@
 # Vue Equalizer
 
-Vue Equalizer is a vue component to help solve a common frontend development problem, where independent items and nested content need to be equal height.
+Vue Equalizer is a Vue.js component to help solve a common frontend development problem, where independent items and nested content need to be equal height.
 
-Until the Level 2 CSS Grid specification which allows for subgrids is available and widely supported, javascript will be required to achieve this effect.
+Until the Level 2 CSS Grid specification which allows for subgrids is available and widely supported, JavaScript will be required to achieve this effect.
 
 ## The Problem
 
@@ -10,7 +10,7 @@ A common design frontend developers are given looks something like this. A row o
 
 ![](https://www.dropbox.com/s/u5rfpf9j4as6mp0/design.png?raw=true)
 
-The reality is that once real and dynamic content is added, the blocks end up looking like this:
+In reality, once real and dynamic content is added the blocks end up looking like this:
 
 ![](https://www.dropbox.com/s/j0bizafvizpw424/reality.png?raw=true)
 
@@ -39,7 +39,7 @@ new Vue({
 Alternatively add the CDN script tag directly to your page.
 
 ```html
-<script src="https://unpkg.com/vue-equalizer@1.0.6/dist/equalizer.min.js"></script>
+<script src="https://unpkg.com/vue-equalizer@1.0.7/dist/equalizer.min.js"></script>
 ```
 
 In your HTML:
@@ -47,12 +47,12 @@ In your HTML:
 ```html
 <div id="app">
     <equalizer
-    :classes="['card','card-title', 'card-desc']"
-    :config="{
-        1024: 4,
-        680: 3,
-        0: 1
-    }"
+        :classes="['card','card-title', 'card-desc']"
+        :config="{
+            1024: 4,
+            680: 3,
+            0: 1
+        }"
     >
         <!-- HTML -->
     </equalizer>
@@ -67,9 +67,9 @@ The `classes` prop is **required**.
 
 ### Config
 
-The equalizer component accepts a config object of key value pairs. The key must be an integer which is a min-width breakpoint. The value is the number of elements per row at that breakpoint.
+The equalizer component accepts a config object of key value pairs. The key must be an integer which is a *min-width* breakpoint. The value is the number of elements per row at that breakpoint.
 
-The `config` prop is **optional**. If no config object is passed as props then by default the equalizer will make all items the same height regardless of screen width.
+The `config` prop is **optional**. If no config object is passed as props then by default the equalizer will make all items the same height regardless of screen width and number per row.
 
 ## Demo
 

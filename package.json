@@ -1,13 +1,19 @@
 {
     "name": "vue-equalizer",
-    "version": "1.0.6",
-    "description": "",
+    "version": "1.0.7",
+    "description": "Vue Equalizer is a Vue.js component to help solve a common frontend development problem, where independent items and nested content need to be equal height.",
     "author": "Jason Lai",
     "license": "ISC",
     "repository": {
         "type": "git",
         "url": "https://github.com/laij84/vue-equalizer"
     },
+    "keywords": [
+        "vue",
+        "equal height",
+        "subgrid",
+        "grid"
+    ],
     "main": "dist/equalizer.umd.js",
     "module": "dist/equalizer.esm.js",
     "unpkg": "dist/equalizer.min.js",
