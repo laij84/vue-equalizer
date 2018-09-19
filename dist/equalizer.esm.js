@@ -1,16 +1,5 @@
-import 'babel-polyfill';
 import debounce from 'debounce';
 import imagesLoaded from 'imagesloaded';
-
-var toConsumableArray = function (arr) {
-  if (Array.isArray(arr)) {
-    for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) arr2[i] = arr[i];
-
-    return arr2;
-  } else {
-    return Array.from(arr);
-  }
-};
 
 (function () {
     if (typeof document !== 'undefined') {
@@ -52,8 +41,7 @@ var component = { render: function render() {
                 var itemsPerRow = this.config[breakpoint];
 
                 this.classes.forEach(function (elemClass) {
-                    var eqItems = [].concat(toConsumableArray(_this.$el.querySelectorAll('.' + elemClass)));
-
+                    var eqItems = Array.prototype.slice.call(_this.$el.querySelectorAll('.' + elemClass));
                     var rows = _this.chunk(eqItems, itemsPerRow);
                     rows.forEach(function (row) {
                         _this.setMaxHeight(row, itemsPerRow === 1);
@@ -86,7 +74,7 @@ var component = { render: function render() {
             return current;
         },
         getNaturalHeights: function getNaturalHeights(items) {
-            return [].concat(toConsumableArray(items)).map(function (item) {
+            return Array.prototype.slice.call(items).map(function (item) {
                 item.style.height = "auto";
                 return item.clientHeight;
             });

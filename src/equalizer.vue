@@ -5,7 +5,6 @@
 </template>
 
 <script>
-import 'babel-polyfill';
 import debounce from "debounce";
 import imagesLoaded from "imagesloaded";
 
@@ -29,8 +28,7 @@ export default {
                 const itemsPerRow = this.config[breakpoint];
 
                 this.classes.forEach(elemClass => {
-                    const eqItems = [...this.$el.querySelectorAll(`.${elemClass}`)];
-
+                    const eqItems = Array.prototype.slice.call(this.$el.querySelectorAll(`.${elemClass}`));
                     const rows = this.chunk(eqItems, itemsPerRow);
                     rows.forEach(row => {
                         this.setMaxHeight(row, itemsPerRow === 1);
@@ -60,7 +58,7 @@ export default {
             return current;
         },
         getNaturalHeights(items) {
-            return [...items].map(item => {
+            return Array.prototype.slice.call(items).map(item => {
                 item.style.height = "auto";
                 return item.clientHeight;
             });

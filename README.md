@@ -39,7 +39,7 @@ new Vue({
 Alternatively add the CDN script tag directly to your page.
 
 ```html
-<script src="https://unpkg.com/vue-equalizer@1.0.5/dist/equalizer.min.js"></script>
+<script src="https://unpkg.com/vue-equalizer@1.0.6/dist/equalizer.min.js"></script>
 ```
 
 In your HTML:

@@ -21,7 +21,6 @@
         "build:unpkg": "rollup --config build/rollup.config.js --format iife --file dist/equalizer.min.js"
     },
     "dependencies": {
-        "babel-polyfill": "^6.26.0",
         "debounce": "^1.2.0",
         "imagesloaded": "^4.1.4"
     },
